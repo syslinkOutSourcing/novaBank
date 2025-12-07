@@ -213,9 +213,11 @@ export const translations = {
     dailyInvestedAmount: "Daily Invested Amount",
     exceedRemainingDailyQuota: "Exceed Remaining Daily Quota",
 
-    curPeroidMaxInvestment: "Current Peroid(Six Hours) Max Investment",
+    curPeroidMaxInvestment: "Current Peroid Max Investment",
     curPeroidInvestedAmount: "Current Peroid Invested Amount",
+    periodInterval: "Period Interval",
     noLimitationBurn: "No Limitation of BURN Investment",
+    hours: "Hours",
 
     // New translations for Burn Invested Event Query
     burnInvestedEvents: "Burn Invested Event Query",
@@ -497,9 +499,11 @@ export const translations = {
     dailyInvestedAmount: "当日已投资金额",
     exceedRemainingDailyQuota: "超过当日剩余额度",
 
-    curPeroidMaxInvestment: "当前周期（六小时）最大可投资金额",
+    curPeroidMaxInvestment: "当前周期最大可投资金额",
     curPeroidInvestedAmount: "当前周期已投资金额",
+    periodInterval: "周期时长",
     noLimitationBurn: "BURN入金不受限",
+    hours: "小时",
 
     // New translations for Burn Invested Event Query
     burnInvestedEvents: "Burn Invested 事件查询",

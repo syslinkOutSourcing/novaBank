@@ -476,6 +476,11 @@ export default function Home() {
         functionName: 'authers',
         args: [address],
       },
+      {
+        ...novaBankConfig,
+        functionName: 'totalContribute',
+        args: [],
+      },
     ],
   })
 
@@ -497,6 +502,7 @@ export default function Home() {
     claimFee,                  // uint256
     isInvestorNotFinishCompound, // bool
     bAuther,                  // bool
+    totalContribute,          // uint256
   ] = basicData || []
 
   const [tmpMaxInvestment, setTmpMaxInvestment] = useState(10000);
@@ -518,7 +524,8 @@ export default function Home() {
     totalInvestorNumber: Number(totalInvestorNumber?.result),
     claimFee: formatBigNumber(claimFee?.result) || 'N/A',
     isInvestorNotFinishCompound: isInvestorNotFinishCompound?.result,
-    bAuther: bAuther?.result
+    bAuther: bAuther?.result,
+    totalContribute: formatBigNumber(totalContribute?.result, 18, 2) || 'N/A',
   }
 
   // Get last 5 investors
@@ -1114,26 +1121,10 @@ export default function Home() {
     enabled: !!address && !!formattedData.burnToken && formattedData.burnToken !== 'N/A',
   })
 
-  // Burn Lock 2 Data Integration
-  const burnLock2Address = '0x1A068981133C90a1E14cA85438192ecb9A2bD141'
   const burnLock2Config = {
-    address: burnLock2Address,
+    address: pinkLock.address,
     abi: pinkLock.abi,
   }
-
-  const { data: burnLock2Data } = useReadContracts({
-    contracts: [
-      { ...burnLock2Config, functionName: 'totalLockedUser' },
-      { ...burnLock2Config, functionName: 'totalLockedAmount' },
-      { ...burnLock2Config, functionName: 'totalWithdrawAmount' },
-    ]
-  })
-
-  const [
-    bl2TotalLockedUser,
-    bl2TotalLockedAmount,
-    bl2TotalWithdrawAmount
-  ] = burnLock2Data || []
 
   const { data: bl2UserLockedAmount } = useReadContract({
     ...burnLock2Config,
@@ -2098,7 +2089,7 @@ export default function Home() {
               <VStack align="start" spacing={4} width="100%">
                 <TechStat
                   label={t.totalContribteValue || 'Total Contribute Value'}
-                  value={bl2TotalLockedUser?.result ? Number(bl2TotalLockedUser.result) : 0}
+                  value={formattedData.totalContribute}
                   icon={FaGift}
                 />
                 <Divider borderColor={TECH_COLORS.border} />
@@ -2138,6 +2129,10 @@ export default function Home() {
                   <HStack justify="space-between">
                     <Text color={TECH_COLORS.textDim}>{t.curPeroidInvestedAmount}</Text>
                     <Text fontWeight="bold" color={TECH_COLORS.primary}>{formatBigNumber(investAmountDaily || '0', 18, 2)} USDT</Text>
+                  </HStack>
+                  <HStack justify="space-between">
+                    <Text color={TECH_COLORS.textDim}>{t.periodInterval}</Text>
+                    <Text fontWeight="bold" color={TECH_COLORS.secondary}>6 {t.hours}</Text>
                   </HStack>
                 </VStack>
 
