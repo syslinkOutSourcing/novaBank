@@ -2153,7 +2153,7 @@ export default function Home() {
                   height="56px"
                   fontSize="lg"
                   onClick={handleOpenBurnModal}
-                  isDisabled={disableAllOp}
+                  isDisabled={disableAllOp || !bInvestable || bExceedInvestmentToday}
                 >
                   {t.investBurn || 'Invest BURN'}
                 </TechButton>
