@@ -21,7 +21,7 @@ export const translations = {
     contractUsdt: "Contract USDT",
     burnPrice: "Price of BURN",
 
-    investmentLimits: "Investment Limits",
+    investmentLimits: "Investment",
     minInvestment: "Min Investment",
     maxInvestment: "Max Investment",
 
@@ -305,7 +305,7 @@ export const translations = {
     contractUsdt: "合约中的USDT",
     burnPrice: "当前BURN价格",
 
-    investmentLimits: "投资限额",
+    investmentLimits: "投资",
     minInvestment: "最小可投资额",
     maxInvestment: "最大可投资额",
 
