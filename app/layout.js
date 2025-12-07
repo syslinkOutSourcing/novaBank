@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './globals.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Box } from '@chakra-ui/react'
+import { LanguageProvider } from './context/LanguageContext'
 
 const theme = extendTheme({
   styles: {
@@ -72,26 +73,28 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body>
-        <WagmiProvider config={config}> 
-            <QueryClientProvider client={queryClient}>
-                <RainbowKitProvider locale="en-US" coolMode
-                    // showRecentTransactions={true}
-                    theme={darkTheme({
-                    accentColor: '#555555',
-                    accentColorForeground: 'white',
-                    })}>
-                    <ChakraProvider theme={theme}>
-                        <div className="tech-background"></div>
-                        {
-                          isMobile ? <Header_mobile /> : <Header />
-                        }
-                        <Box pt="80px">
-                            {children}
-                        </Box>
-                    </ChakraProvider>
-                </RainbowKitProvider>
-            </QueryClientProvider>
-        </WagmiProvider>
+        <LanguageProvider>
+          <WagmiProvider config={config}> 
+              <QueryClientProvider client={queryClient}>
+                  <RainbowKitProvider locale="en-US" coolMode
+                      // showRecentTransactions={true}
+                      theme={darkTheme({
+                      accentColor: '#555555',
+                      accentColorForeground: 'white',
+                      })}>
+                      <ChakraProvider theme={theme}>
+                          <div className="tech-background"></div>
+                          {
+                            isMobile ? <Header_mobile /> : <Header />
+                          }
+                          <Box pt="20px">
+                              {children}
+                          </Box>
+                      </ChakraProvider>
+                  </RainbowKitProvider>
+              </QueryClientProvider>
+          </WagmiProvider>
+        </LanguageProvider>
       </body>
     </html>
   )

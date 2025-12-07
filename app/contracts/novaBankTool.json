@@ -1,0 +1,279 @@
+{
+  "address": "0x51536bA3a19AE3c21fFBfFb7F743b84d4e8eb2bC",
+  "abi": [
+    {
+      "type": "constructor",
+      "inputs": [
+        {
+          "name": "_novaBank",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "burnToken",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract IERC20"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "calculateTotalInvestAmount",
+      "inputs": [
+        {
+          "name": "fromTime",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "toTime",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getFullInvestmentInfo",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "mergedInvestorNum",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "mergedInvestAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "mergedlInvestAmountWithdrawed",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "mergedInterestAmountWithdrawed",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "mergedBurnAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getInvestorInfo",
+      "inputs": [
+        {
+          "name": "investor",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bInvestable",
+          "type": "bool",
+          "internalType": "bool"
+        },
+        {
+          "name": "investAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "interestRateDaily",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "withdrawableInterestAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "withdrawPricipalTime",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "yourReferTotalAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "yourReferBurnAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "yourReferUsdtAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "yourTotalPerformance",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "yourTotalExtraRewards",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "yourWithrawnExtraRewards",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getWorkshops",
+      "inputs": [
+        {
+          "name": "investor",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "investAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "workshops",
+          "type": "address[]",
+          "internalType": "address[]"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "novaBank",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract INovaBank"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "owner",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "renounceOwnership",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setNovaBank",
+      "inputs": [
+        {
+          "name": "_novaBank",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "transferOwnership",
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "event",
+      "name": "OwnershipTransferred",
+      "inputs": [
+        {
+          "name": "previousOwner",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "newOwner",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "error",
+      "name": "OwnableInvalidOwner",
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address",
+          "internalType": "address"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "OwnableUnauthorizedAccount",
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address",
+          "internalType": "address"
+        }
+      ]
+    }
+  ]
+}

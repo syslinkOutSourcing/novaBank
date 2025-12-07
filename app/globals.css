@@ -1,37 +1,42 @@
 @import "./web3.css";
 
 :root {
-  --primary: #FF007A;
-  --secondary: #2172E5;
-  --background: #191B1F;
-  --foreground: #FFFFFF;
-  --border: #40444F;
-  --background-start: #0a0a0a;
-  --background-end: #1a1a1a;
-  --accent-color: #00ff9d;
-  --accent-glow: rgba(0, 255, 157, 0.5);
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --card-bg: rgba(255, 255, 255, 0.05);
+  --primary: #F0B90B;
+  --secondary: #000000;
+  --background: #FFFFFF;
+  --foreground: #000000;
+  --border: #F0B90B;
+  --background-start: #FFFFFF;
+  --background-end: #F5F5F5;
+  --accent-color: #F0B90B;
+  --accent-glow: rgba(240, 185, 11, 0.5);
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --card-bg: rgba(0, 0, 0, 0.05);
 
   /* violet */
-  --primary-color: 111, 76, 255;
-  
+  --primary-color: 240, 185, 11;
+
   /* white */
-  --text-color: 256, 256, 256;
-  --bg-image: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80');
+  --text-color: 0, 0, 0;
+  --bg-image: none;
 }
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background-color: #1D1E22;
-  color: white;
+  background-color: #FFFFFF;
+  color: black;
   padding: 1rem;
   text-align: center;
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   margin-bottom: 0.5em;
 }
