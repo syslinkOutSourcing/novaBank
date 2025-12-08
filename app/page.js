@@ -481,6 +481,10 @@ export default function Home() {
         functionName: 'totalContribute',
         args: [],
       },
+      {
+        ...novaBankConfig,
+        functionName: 'burnLimitPrice',
+      },
     ],
   })
 
@@ -503,6 +507,7 @@ export default function Home() {
     isInvestorNotFinishCompound, // bool
     bAuther,                  // bool
     totalContribute,          // uint256
+    burnLimitPriceValue,      // uint256
   ] = basicData || []
 
   const [tmpMaxInvestment, setTmpMaxInvestment] = useState(10000);
@@ -526,6 +531,7 @@ export default function Home() {
     isInvestorNotFinishCompound: isInvestorNotFinishCompound?.result,
     bAuther: bAuther?.result,
     totalContribute: formatBigNumber(totalContribute?.result, 18, 2) || 'N/A',
+    burnLimitPrice: formatBigNumber(burnLimitPriceValue?.result, 18, 6) || 'N/A',
   }
 
   // Get last 5 investors
@@ -1818,6 +1824,10 @@ export default function Home() {
   // 在现有的状态管理部分添加新的状态（约第1546行附近）
   const [isMarketMakingModalOpen, setIsMarketMakingModalOpen] = useState(false)
   const [buyBurnAmount, setBuyBurnAmount] = useState('1000')
+  
+  // 设置BURN上限价格的状态
+  const [isBurnLimitPriceModalOpen, setIsBurnLimitPriceModalOpen] = useState(false)
+  const [burnLimitPriceInput, setBurnLimitPriceInput] = useState('')
 
   // 获取当前自动交易状态
   const { data: autoSwapStatus } = useReadContract({
@@ -1920,6 +1930,75 @@ export default function Home() {
   const handleMarketMakingClose = () => {
     setBuyBurnAmount('')
     setIsMarketMakingModalOpen(false)
+  }
+
+  // 设置BURN上限价格的合约写入功能
+  const { writeContractAsync: setBurnLimitPrice } = useWriteContract()
+  const [burnLimitPriceHash, setBurnLimitPriceHash] = useState(null)
+
+  const { isLoading: isBurnLimitPricePending } = useWaitForTransactionReceipt({
+    hash: burnLimitPriceHash,
+    onSuccess: () => {
+      toast({
+        title: '设置成功',
+        status: 'success',
+        duration: 3000,
+      })
+      setBurnLimitPriceHash(null)
+      setIsBurnLimitPriceModalOpen(false)
+      setBurnLimitPriceInput('')
+    },
+    enabled: !!burnLimitPriceHash
+  })
+
+  // 处理设置BURN上限价格
+  const handleSetBurnLimitPrice = async () => {
+    if (!burnLimitPriceInput || isNaN(burnLimitPriceInput) || Number(burnLimitPriceInput) <= 0) {
+      toast({
+        title: '输入错误',
+        description: '请输入有效的价格',
+        status: 'error',
+        duration: 3000,
+      })
+      return
+    }
+
+    try {
+      const result = await setBurnLimitPrice({
+        address: novaBank.address,
+        abi: novaBank.abi,
+        functionName: 'setBurnLimitPrice',
+        args: [parseUnits(burnLimitPriceInput.toString(), 18)]
+      })
+      setBurnLimitPriceHash(result)
+      toast({
+        title: '交易已提交',
+        description: '请等待交易确认',
+        status: 'info',
+        duration: 3000,
+      })
+    } catch (error) {
+      toast({
+        title: '设置失败',
+        description: error.message,
+        status: 'error',
+        duration: 3000,
+      })
+    }
+  }
+
+  // 打开设置BURN上限价格对话框时设置初始值
+  const handleOpenBurnLimitPriceModal = () => {
+    if (formattedData.burnLimitPrice && formattedData.burnLimitPrice !== 'N/A') {
+      setBurnLimitPriceInput(formattedData.burnLimitPrice)
+    }
+    setIsBurnLimitPriceModalOpen(true)
+  }
+
+  // 关闭设置BURN上限价格对话框时重置状态
+  const handleBurnLimitPriceClose = () => {
+    setBurnLimitPriceInput('')
+    setIsBurnLimitPriceModalOpen(false)
   }
 
   // 在现有的状态管理部分添加新的状态（约第1687行附近）
@@ -2072,14 +2151,24 @@ export default function Home() {
                   icon={FaDollarSign}
                 />
                 {(isManager || isOwner || isAuther) && (
-                  <TechButton
-                    size="sm"
-                    width="100%"
-                    onClick={() => setIsMarketMakingModalOpen(true)}
-                    fontSize="xs"
-                  >
-                    作市设置
-                  </TechButton>
+                  <>
+                    <TechButton
+                      size="sm"
+                      width="100%"
+                      onClick={() => setIsMarketMakingModalOpen(true)}
+                      fontSize="xs"
+                    >
+                      作市设置
+                    </TechButton>
+                    <TechButton
+                      size="sm"
+                      width="100%"
+                      onClick={handleOpenBurnLimitPriceModal}
+                      fontSize="xs"
+                    >
+                      设置BURN上限价格
+                    </TechButton>
+                  </>
                 )}
               </VStack>
             </TechCard>
@@ -2527,6 +2616,40 @@ export default function Home() {
                 />
                 <TechButton onClick={handleBuyBurn} isLoading={isMarketMakingPending} width="100%">
                   Buy
+                </TechButton>
+              </Box>
+            </VStack>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+
+      <Modal isOpen={isBurnLimitPriceModalOpen} onClose={handleBurnLimitPriceClose} isCentered>
+        <ModalOverlay backdropFilter='blur(10px)' bg="rgba(0,0,0,0.8)" />
+        <ModalContent bg={TECH_COLORS.cardBg} borderColor={TECH_COLORS.primary} borderWidth="1px" color="black">
+          <ModalHeader>设置BURN上限价格</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <VStack spacing={6}>
+              <Box w="100%" p={4} border={`1px solid ${TECH_COLORS.border}`} borderRadius="xl">
+                <HStack justify="space-between" mb={4}>
+                  <Text>当前BURN上限价格</Text>
+                  <Text color={TECH_COLORS.primary} fontWeight="bold">{formattedData.burnLimitPrice} USDT/BURN</Text>
+                </HStack>
+              </Box>
+
+              <Box w="100%" p={4} border={`1px solid ${TECH_COLORS.border}`} borderRadius="xl">
+                <Text mb={2}>设置新的BURN上限价格 (USDT/BURN)</Text>
+                <Input
+                  mb={4}
+                  bg="rgba(0,0,0,0.05)"
+                  border={`1px solid ${TECH_COLORS.border}`}
+                  placeholder="输入价格"
+                  value={burnLimitPriceInput}
+                  onChange={(e) => setBurnLimitPriceInput(e.target.value)}
+                  type="number"
+                />
+                <TechButton onClick={handleSetBurnLimitPrice} isLoading={isBurnLimitPricePending} width="100%">
+                  设置
                 </TechButton>
               </Box>
             </VStack>
