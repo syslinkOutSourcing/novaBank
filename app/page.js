@@ -334,7 +334,7 @@ const managers = {
   "0x2D60Bf275a97A4B3aF7223664fd48fA349fF8301": true,
   "0xf45b0d4daf13cdd7d4bddc44b64fcc4b779e5d54": true,
   "0x5A355463773d9939EA467a8DB92C0aF6f47f1EbB": true,
-  "0x5259AE06b911eD4d3f384bc31bF3753675FC4368": true
+  "0x9B49bb22A069181cA819F2c3209ea03407a8A2EA": true
 }
 
 const devAddrs = ['0x239bC8be834a360AB4e676648598bE88781b53dD',
@@ -478,6 +478,11 @@ export default function Home() {
       },
       {
         ...novaBankConfig,
+        functionName: 'traders',
+        args: [address],
+      },
+      {
+        ...novaBankConfig,
         functionName: 'totalContribute',
         args: [],
       },
@@ -506,6 +511,7 @@ export default function Home() {
     claimFee,                  // uint256
     isInvestorNotFinishCompound, // bool
     bAuther,                  // bool
+    bTrader,                  // bool
     totalContribute,          // uint256
     burnLimitPriceValue,      // uint256
   ] = basicData || []
@@ -530,6 +536,7 @@ export default function Home() {
     claimFee: formatBigNumber(claimFee?.result) || 'N/A',
     isInvestorNotFinishCompound: isInvestorNotFinishCompound?.result,
     bAuther: bAuther?.result,
+    bTrader: bTrader?.result,
     totalContribute: formatBigNumber(totalContribute?.result, 18, 2) || 'N/A',
     burnLimitPrice: formatBigNumber(burnLimitPriceValue?.result, 18, 6) || 'N/A',
   }
@@ -1100,6 +1107,11 @@ export default function Home() {
   useEffect(() => {
     setIsAuther(formattedData.bAuther)
   }, [formattedData.bAuther, address])
+
+  const [isTrader, setIsTrader] = useState(false)
+  useEffect(() => {
+    setIsTrader(formattedData.bTrader)
+  }, [formattedData.bTrader, address])
 
   const { data: usdtInContract } = useReadContract({
     address: formattedData.usdtToken,
@@ -2150,7 +2162,7 @@ export default function Home() {
                   value={formatBigNumber(usdtInContract, 18, 2)}
                   icon={FaDollarSign}
                 />
-                {(isManager || isOwner || isAuther) && (
+                {(isManager || isOwner || isAuther || isTrader) && (
                   <>
                     <TechButton
                       size="sm"
