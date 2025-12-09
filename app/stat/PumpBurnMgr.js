@@ -59,6 +59,11 @@ export default function PumpBurnMgr() {
   const [migrateOldContract, setMigrateOldContract] = useState('0x93fD192e1CD288F1f5eE0A019429B015016061F9')
   const [migrateFromIndex, setMigrateFromIndex] = useState('')
   const [migrateToIndex, setMigrateToIndex] = useState('')
+  // 入金周期限额相关状态
+  const [periodStartTime, setPeriodStartTime] = useState('')
+  const [periodStartDateTime, setPeriodStartDateTime] = useState('') // 用于日期时间选择器
+  const [periodTimeInterval, setPeriodTimeInterval] = useState('')
+  const [periodLimitAmount, setPeriodLimitAmount] = useState('')
 
   // 合约读取
   const { data: contractInfo } = useReadContract({
@@ -145,6 +150,25 @@ export default function PumpBurnMgr() {
     functionName: 'totalLockedUser',
   })
 
+  // 入金周期限额相关读取
+  const { data: startTimeInfo } = useReadContract({
+    address: novaBank.address,
+    abi: novaBank.abi,
+    functionName: 'startTime',
+  })
+
+  const { data: timeIntervalInfo } = useReadContract({
+    address: novaBank.address,
+    abi: novaBank.abi,
+    functionName: 'timeInterval',
+  })
+
+  const { data: limitAmountInfo } = useReadContract({
+    address: novaBank.address,
+    abi: novaBank.abi,
+    functionName: 'limitAmount',
+  })
+
   // 添加useEffect来同步合约状态到本地状态（约第122行后添加）
   useEffect(() => {
     if (autoSwapInfo !== undefined) {
@@ -163,6 +187,43 @@ export default function PumpBurnMgr() {
       setPauseReinvest(pauseReinvestInfo)
     }
   }, [pauseReinvestInfo])
+
+  // 同步入金周期限额相关状态
+  useEffect(() => {
+    if (startTimeInfo !== undefined) {
+      // 将时间戳转换为可读格式，但保留原始值用于编辑
+      const timestamp = Number(startTimeInfo)
+      if (timestamp > 0) {
+        setPeriodStartTime(timestamp.toString())
+        // 转换为datetime-local格式 (YYYY-MM-DDTHH:mm)
+        const date = new Date(timestamp * 1000)
+        const year = date.getFullYear()
+        const month = String(date.getMonth() + 1).padStart(2, '0')
+        const day = String(date.getDate()).padStart(2, '0')
+        const hours = String(date.getHours()).padStart(2, '0')
+        const minutes = String(date.getMinutes()).padStart(2, '0')
+        setPeriodStartDateTime(`${year}-${month}-${day}T${hours}:${minutes}`)
+      }
+    }
+  }, [startTimeInfo])
+
+  useEffect(() => {
+    if (timeIntervalInfo !== undefined) {
+      // timeInterval是秒数，转换为小时显示
+      const seconds = Number(timeIntervalInfo)
+      if (seconds > 0) {
+        setPeriodTimeInterval((seconds / 3600).toString())
+      }
+    }
+  }, [timeIntervalInfo])
+
+  useEffect(() => {
+    if (limitAmountInfo !== undefined) {
+      // limitAmount是18位精度的USDT数量
+      const amount = formatBigNumber(limitAmountInfo, 18, 0)
+      setPeriodLimitAmount(amount)
+    }
+  }, [limitAmountInfo])
 
   // 合约写入
   const { writeContractAsync } = useWriteContract()
@@ -337,7 +398,7 @@ export default function PumpBurnMgr() {
   }
 
   // 设置授权者
-  const handleSetAuther = async () => {
+  const handleSetTrader = async () => {
     try {
       if (!isAddress(autherAddress)) {
         toast({
@@ -350,7 +411,7 @@ export default function PumpBurnMgr() {
       const result = await writeContractAsync({
         address: novaBank.address,
         abi: novaBank.abi,
-        functionName: 'setAuther',
+        functionName: 'setTrader',
         args: [autherAddress, autherApproved]
       })
       setTxHash(result)
@@ -667,6 +728,121 @@ export default function PumpBurnMgr() {
     }
   }
 
+  // 设置周期起始时间
+  const handleSetStartTime = async () => {
+    try {
+      const timestamp = parseInt(periodStartTime)
+      if (isNaN(timestamp) || timestamp <= 0) {
+        toast({
+          title: '输入错误',
+          description: '请输入有效的时间戳（秒）',
+          status: 'error',
+          duration: 3000,
+        })
+        return
+      }
+      const result = await writeContractAsync({
+        address: novaBank.address,
+        abi: novaBank.abi,
+        functionName: 'setStartTime',
+        args: [timestamp]
+      })
+      setTxHash(result)
+      toast({
+        title: '交易已提交',
+        description: '请等待交易确认',
+        status: 'info',
+        duration: 3000,
+      })
+    } catch (error) {
+      toast({
+        title: '设置失败',
+        description: error.message,
+        status: 'error',
+        duration: 3000,
+      })
+    }
+  }
+
+  // 设置周期时长
+  const handleSetTimeInterval = async () => {
+    try {
+      const hours = parseFloat(periodTimeInterval)
+      if (isNaN(hours) || hours <= 0) {
+        toast({
+          title: '输入错误',
+          description: '请输入有效的小时数',
+          status: 'error',
+          duration: 3000,
+        })
+        return
+      }
+      // 将小时转换为秒
+      const seconds = Math.floor(hours * 3600)
+      // 如果startTime未设置，使用当前时间戳
+      const currentStartTime = startTimeInfo && Number(startTimeInfo) > 0 
+        ? Number(startTimeInfo) 
+        : Math.floor(Date.now() / 1000)
+      
+      const result = await writeContractAsync({
+        address: novaBank.address,
+        abi: novaBank.abi,
+        functionName: 'setTimeInterval',
+        args: [currentStartTime, seconds]
+      })
+      setTxHash(result)
+      toast({
+        title: '交易已提交',
+        description: '请等待交易确认',
+        status: 'info',
+        duration: 3000,
+      })
+    } catch (error) {
+      toast({
+        title: '设置失败',
+        description: error.message,
+        status: 'error',
+        duration: 3000,
+      })
+    }
+  }
+
+  // 设置周期入金上限
+  const handleSetLimitAmount = async () => {
+    try {
+      const amount = parseFloat(periodLimitAmount)
+      if (isNaN(amount) || amount <= 0) {
+        toast({
+          title: '输入错误',
+          description: '请输入有效的USDT数量',
+          status: 'error',
+          duration: 3000,
+        })
+        return
+      }
+      const result = await writeContractAsync({
+        address: novaBank.address,
+        abi: novaBank.abi,
+        functionName: 'setLimitAmount',
+        args: [parseUnits(periodLimitAmount, 18)]
+      })
+      setTxHash(result)
+      toast({
+        title: '交易已提交',
+        description: '请等待交易确认',
+        status: 'info',
+        duration: 3000,
+      })
+    } catch (error) {
+      toast({
+        title: '设置失败',
+        description: error.message,
+        status: 'error',
+        duration: 3000,
+      })
+    }
+  }
+
   if (!isAnyManager) {
     return (
       <Box className="web3-card web3-bg-blur" p={6}>
@@ -743,6 +919,8 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setMinInvestment(e.target.value)}
                   placeholder="USDT数量"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
                 <Button className="web3-btn" onClick={handleSetMinInvestment}>设置</Button>
               </HStack>
@@ -753,6 +931,8 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setMaxInvestment(e.target.value)}
                   placeholder="USDT数量"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
                 <Button className="web3-btn" onClick={handleSetMaxInvestment}>设置</Button>
               </HStack>
@@ -763,14 +943,170 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setMinCompoundInvestment(e.target.value)}
                   placeholder="最小复投"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
                 <Input
                   value={maxCompoundInvestment}
                   onChange={(e) => setMaxCompoundInvestment(e.target.value)}
                   placeholder="最大复投"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
                 <Button className="web3-btn" onClick={handleSetCompoundInvestment}>设置</Button>
+              </HStack>
+            </VStack>
+          </CardBody>
+        </Card>
+
+        {/* 入金周期限额设置 */}
+        <Card bg="gray.800" borderColor="gray.700" borderWidth="1px">
+          <CardBody>
+            <Heading size="md" className="web3-text-gradient" mb={4}>入金周期限额设置</Heading>
+            <VStack spacing={4}>
+              {/* 当前状态显示 */}
+              <Box width="100%" p={4} borderRadius="md" bg="rgba(255,255,255,0.05)">
+                <Heading size="sm" mb={3} color="white">当前状态</Heading>
+                <VStack spacing={2} align="stretch">
+                  <HStack justify="space-between">
+                    <Text color="white">周期起始时间:</Text>
+                    <Text className="web3-text-glow">
+                      {startTimeInfo ? new Date(Number(startTimeInfo) * 1000).toLocaleString() : '未设置'}
+                    </Text>
+                  </HStack>
+                  <HStack justify="space-between">
+                    <Text color="white">周期时长:</Text>
+                    <Text className="web3-text-glow">
+                      {timeIntervalInfo ? `${Number(timeIntervalInfo) / 3600} 小时` : '未设置'}
+                    </Text>
+                  </HStack>
+                  <HStack justify="space-between">
+                    <Text color="white">周期入金上限:</Text>
+                    <Text className="web3-text-glow">
+                      {limitAmountInfo ? `${formatBigNumber(limitAmountInfo, 18, 0)} USDT` : '未设置'}
+                    </Text>
+                  </HStack>
+                </VStack>
+              </Box>
+
+              {/* 设置周期起始时间 */}
+              <VStack width="100%" spacing={3} align="stretch">
+                <HStack width="100%">
+                  <Text width="120px" color="white">起始时间:</Text>
+                  <Input
+                    value={periodStartDateTime}
+                    onChange={(e) => {
+                      setPeriodStartDateTime(e.target.value)
+                      if (e.target.value) {
+                        const timestamp = Math.floor(new Date(e.target.value).getTime() / 1000)
+                        setPeriodStartTime(timestamp.toString())
+                      }
+                    }}
+                    placeholder="选择日期时间"
+                    className="web3-input"
+                    type="datetime-local"
+                    color="white"
+                    _placeholder={{ color: 'gray.400' }}
+                  />
+                  <Button 
+                    className="web3-btn" 
+                    onClick={() => {
+                      const now = new Date()
+                      const year = now.getFullYear()
+                      const month = String(now.getMonth() + 1).padStart(2, '0')
+                      const day = String(now.getDate()).padStart(2, '0')
+                      const hours = String(now.getHours()).padStart(2, '0')
+                      const minutes = String(now.getMinutes()).padStart(2, '0')
+                      const datetimeStr = `${year}-${month}-${day}T${hours}:${minutes}`
+                      setPeriodStartDateTime(datetimeStr)
+                      setPeriodStartTime(Math.floor(now.getTime() / 1000).toString())
+                    }}
+                    size="sm"
+                    colorScheme="blue"
+                  >
+                    当前时间
+                  </Button>
+                  <Button 
+                    className="web3-btn" 
+                    onClick={handleSetStartTime}
+                    isLoading={isTxPending}
+                  >
+                    设置
+                  </Button>
+                </HStack>
+                <HStack width="100%" ml="120px">
+                  <Text fontSize="xs" color="gray.400">或直接输入Unix时间戳:</Text>
+                  <Input
+                    value={periodStartTime}
+                    onChange={(e) => {
+                      setPeriodStartTime(e.target.value)
+                      if (e.target.value) {
+                        const timestamp = parseInt(e.target.value)
+                        if (timestamp > 0) {
+                          const date = new Date(timestamp * 1000)
+                          const year = date.getFullYear()
+                          const month = String(date.getMonth() + 1).padStart(2, '0')
+                          const day = String(date.getDate()).padStart(2, '0')
+                          const hours = String(date.getHours()).padStart(2, '0')
+                          const minutes = String(date.getMinutes()).padStart(2, '0')
+                          setPeriodStartDateTime(`${year}-${month}-${day}T${hours}:${minutes}`)
+                        }
+                      }
+                    }}
+                    placeholder="Unix时间戳（秒）"
+                    className="web3-input"
+                    type="number"
+                    width="200px"
+                    color="white"
+                    _placeholder={{ color: 'gray.400' }}
+                  />
+                </HStack>
+              </VStack>
+
+              {/* 设置周期时长 */}
+              <HStack width="100%">
+                <Text width="120px" color="white">周期时长:</Text>
+                <Input
+                  value={periodTimeInterval}
+                  onChange={(e) => setPeriodTimeInterval(e.target.value)}
+                  placeholder="小时数"
+                  className="web3-input"
+                  type="number"
+                  step="0.1"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
+                />
+                <Text width="60px" color="white">小时</Text>
+                <Button 
+                  className="web3-btn" 
+                  onClick={handleSetTimeInterval}
+                  isLoading={isTxPending}
+                >
+                  设置
+                </Button>
+              </HStack>
+
+              {/* 设置周期入金上限 */}
+              <HStack width="100%">
+                <Text width="120px" color="white">入金上限:</Text>
+                <Input
+                  value={periodLimitAmount}
+                  onChange={(e) => setPeriodLimitAmount(e.target.value)}
+                  placeholder="USDT数量"
+                  className="web3-input"
+                  type="number"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
+                />
+                <Text width="60px" color="white">USDT</Text>
+                <Button 
+                  className="web3-btn" 
+                  onClick={handleSetLimitAmount}
+                  isLoading={isTxPending}
+                >
+                  设置
+                </Button>
               </HStack>
             </VStack>
           </CardBody>
@@ -788,6 +1124,8 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setClaimFee(e.target.value)}
                   placeholder="BNB数量"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
                 <Button className="web33-btn" onClick={handleSetClaimFee}>设置</Button>
               </HStack>
@@ -798,6 +1136,8 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setManager(e.target.value)}
                   placeholder="0x..."
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
                 <Button className="web3-btn" onClick={handleSetManager}>设置</Button>
               </HStack>
@@ -813,6 +1153,8 @@ export default function PumpBurnMgr() {
                       onChange={(e) => setAutherAddress(e.target.value)}
                       placeholder="0x..."
                       className="web3-input"
+                      color="white"
+                      _placeholder={{ color: 'gray.400' }}
                     />
                   </HStack>
                   
@@ -831,7 +1173,7 @@ export default function PumpBurnMgr() {
                     
                     <Button 
                       className="web3-btn" 
-                      onClick={handleSetAuther}
+                      onClick={handleSetTrader}
                       colorScheme={autherApproved ? "green" : "red"}
                       isLoading={isTxPending}
                       isDisabled={!autherAddress}
@@ -946,6 +1288,7 @@ export default function PumpBurnMgr() {
                     value={interestMonths}
                     onChange={(e) => setInterestMonths(e.target.value)}
                     className="web3-input"
+                    color="white"
                   >
                     <option value="3">3个月</option>
                     <option value="6">6个月</option>
@@ -957,6 +1300,8 @@ export default function PumpBurnMgr() {
                     onChange={(e) => setInterestRate(e.target.value)}
                     placeholder="基点(1%=100)"
                     className="web3-input"
+                    color="white"
+                    _placeholder={{ color: 'gray.400' }}
                   />
                   <Button className="web3-btn" onClick={handleUpdateInterestRate}>设置</Button>
                 </HStack>
@@ -971,6 +1316,7 @@ export default function PumpBurnMgr() {
                     value={lpMonths}
                     onChange={(e) => setLpMonths(e.target.value)}
                     className="web3-input"
+                    color="white"
                   >
                     <option value="3">3个月</option>
                     <option value="6">6个月</option>
@@ -982,6 +1328,8 @@ export default function PumpBurnMgr() {
                     onChange={(e) => setLpRate(e.target.value)}
                     placeholder="基点(1%=100)"
                     className="web3-input"
+                    color="white"
+                    _placeholder={{ color: 'gray.400' }}
                   />
                   <Button className="web3-btn" onClick={handleUpdateLpRate}>设置</Button>
                 </HStack>
@@ -996,6 +1344,7 @@ export default function PumpBurnMgr() {
                     value={referrerMonths}
                     onChange={(e) => setReferrerMonths(e.target.value)}
                     className="web3-input"
+                    color="white"
                   >
                     <option value="3">3个月</option>
                     <option value="6">6个月</option>
@@ -1007,6 +1356,8 @@ export default function PumpBurnMgr() {
                     onChange={(e) => setReferrerRate(e.target.value)}
                     placeholder="基点(1%=100)"
                     className="web3-input"
+                    color="white"
+                    _placeholder={{ color: 'gray.400' }}
                   />
                   <Button className="web3-btn" onClick={handleUpdateReferrerRate}>设置</Button>
                 </HStack>
@@ -1027,6 +1378,8 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setTeamAddresses(e.target.value)}
                   placeholder="多个地址用逗号分隔"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
               </HStack>
               <HStack width="100%">
@@ -1072,6 +1425,8 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setBuyBurnAmount(e.target.value)}
                   placeholder="USDT数量"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
                 <Button className="web3-btn" onClick={handleBuyBurn}>购买</Button>
               </HStack>
@@ -1084,6 +1439,8 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setCompoundCount(e.target.value)}
                   placeholder="次数"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
                 <Text width="100px" color="white">最小月数:</Text>
                 <Input
@@ -1091,6 +1448,8 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setCompoundMinMonthsValue(e.target.value)}
                   placeholder="月数"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
                 <Button className="web3-btn" onClick={handleSetMinMonths}>设置</Button>
               </HStack>
@@ -1113,6 +1472,8 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setSettleFromIndex(e.target.value)}
                   placeholder="从"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
                 <Text width="100px" color="white">结束索引:</Text>
                 <Input
@@ -1120,6 +1481,8 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setSettleEndIndex(e.target.value)}
                   placeholder="到"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
               </HStack>
               <HStack width="100%">
@@ -1129,6 +1492,8 @@ export default function PumpBurnMgr() {
                   onChange={(e) => setSettleBurnPrice(e.target.value)}
                   placeholder="USDT价格"
                   className="web3-input"
+                  color="white"
+                  _placeholder={{ color: 'gray.400' }}
                 />
                 <Button className="web3-btn" onClick={handleSettle} colorScheme="red">
                   批量结算
@@ -1186,6 +1551,8 @@ export default function PumpBurnMgr() {
                     type="number"
                     min="0"
                     max="100"
+                    color="white"
+                    _placeholder={{ color: 'gray.400' }}
                   />
                   <Button 
                     className="web3-btn" 
@@ -1225,6 +1592,8 @@ export default function PumpBurnMgr() {
                     onChange={(e) => setMigrateOldContract(e.target.value)}
                     placeholder="0x93fD192e1CD288F1f5eE0A019429B015016061F9"
                     className="web3-input"
+                    color="white"
+                    _placeholder={{ color: 'gray.400' }}
                   />
                 </HStack>
 
@@ -1238,6 +1607,8 @@ export default function PumpBurnMgr() {
                     className="web3-input"
                     type="number"
                     min="0"
+                    color="white"
+                    _placeholder={{ color: 'gray.400' }}
                   />
                   <Text width="120px" color="white">结束编号:</Text>
                   <Input
@@ -1247,6 +1618,8 @@ export default function PumpBurnMgr() {
                     className="web3-input"
                     type="number"
                     min="0"
+                    color="white"
+                    _placeholder={{ color: 'gray.400' }}
                   />
                 </HStack>
 

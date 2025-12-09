@@ -1,2147 +1,2184 @@
 {
     "address": "0xc3EC9bbC2240105A5ba30C592f7C4E79d79d30d8",
     "abi": [
-        {
-          "type": "constructor",
-          "inputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "CLAIM_FEE",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "authers",
-          "inputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "autoSwapUsdt2Burn",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "burnLimitPrice",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "burnToken",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "contract IERC20"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "burnUsdtPair",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "contract IUniswapPair"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "buyBurn",
-          "inputs": [
-            {
-              "name": "usdtAmount",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "calculateBurnAmountByInvestor",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "calculatePeroid",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "calculateRewards",
-          "inputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "calculateWithdrawableExtraRewards",
-          "inputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "checkInvestable",
-          "inputs": [
-            {
-              "name": "investor",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "claimExtraRewards",
-          "inputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "claimedUsdtRewards",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "payable"
-        },
-        {
-          "type": "function",
-          "name": "claimLeftBurn",
-          "inputs": [],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "claimRewards",
-          "inputs": [
-            {
-              "name": "receiver",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "payable"
-        },
-        {
-          "type": "function",
-          "name": "claimUsdtEmergency",
-          "inputs": [],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "compoundMinMonths",
-          "inputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "compoundStat",
-          "inputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "currentPeriodTotalInvestmentAmount",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "extraToManager",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "getEqualBurnAmount",
-          "inputs": [
-            {
-              "name": "usdtAmount",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "getExpectedBurnAmount",
-          "inputs": [
-            {
-              "name": "usdtAmount",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "getExpectedUsdtAmount",
-          "inputs": [
-            {
-              "name": "burnAmount",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "getMinMonths",
-          "inputs": [
-            {
-              "name": "investor",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "getReferrers",
-          "inputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "investmentInfos",
-              "type": "tuple[]",
-              "internalType": "struct NovaBank.Investment[]",
-              "components": [
-                {
-                  "name": "user",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "usdtAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "burnAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "withdrawedUsdtAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "startTime",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "lastClaimTime",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "endTime",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "interestRateDaily",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "isActive",
-                  "type": "bool",
-                  "internalType": "bool"
-                }
-              ]
-            },
-            {
-              "name": "totalPerformances",
-              "type": "uint256[]",
-              "internalType": "uint256[]"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "getTeamInfos",
-          "inputs": [
-            {
-              "name": "fromIndex",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "endIndex",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "tuple[]",
-              "internalType": "struct NovaBank.TeamInfo[]",
-              "components": [
-                {
-                  "name": "team",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "timestamp",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "bApproved",
-                  "type": "bool",
-                  "internalType": "bool"
-                }
-              ]
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "groupRateFirstLevel",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "groupRateSecondLevel",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "groupRateThirdLevel",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "interestRateMap",
-          "inputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "investBurn",
-          "inputs": [
-            {
-              "name": "amount",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "referrer",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "months",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "investUsdt",
-          "inputs": [
-            {
-              "name": "amount",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "referrer",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "months",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "investments",
-          "inputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "usdtAmount",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "burnAmount",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "withdrawedUsdtAmount",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "startTime",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "lastClaimTime",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "endTime",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "interestRateDaily",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "isActive",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "investors",
-          "inputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "isApprovedTeam",
-          "inputs": [
-            {
-              "name": "team",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "isInvestorNotFinishCompound",
-          "inputs": [
-            {
-              "name": "investor",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "isValidPrice",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "limitAmount",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "lockRate",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "lpRateMap",
-          "inputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "manager",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "managerRate",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "maxCompoundInvestment",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "maxInvestment",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "minCompoundInvestment",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "minInvestment",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "noInterestWhenPrincipleWithdraw",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "openEmergencyWithdraw",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "owner",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "pauseBurnInvest",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "pauseExtraRewardWithdraw",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "pauseInterestWithdraw",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "pausePrincipleWithdraw",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "pauseUsdtInvest",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "paused",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "periodCount",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "pinkLocker",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "rateUsedMap",
-          "inputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "referrals",
-          "inputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "referrer",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "totalBurnRewards",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "totalBurn2UsdtRewards",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "totalUsdtRewards",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "totalPerformance",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "totalExtraRewards",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "withdrawnExtraRewards",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "referrerRateMap",
-          "inputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "referrers",
-          "inputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "renounceOwnership",
-          "inputs": [],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "rewardTiers",
-          "inputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "threshold",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "rate",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "router",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "contract IUniswapV2Router02"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "setAuther",
-          "inputs": [
-            {
-              "name": "auther",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "bApproved",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setAutoSwap",
-          "inputs": [
-            {
-              "name": "_bAutoSwap",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setBurnLimitPrice",
-          "inputs": [
-            {
-              "name": "_burnLimitPrice",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setClaimFee",
-          "inputs": [
-            {
-              "name": "_claimFee",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setCompoundInvestment",
-          "inputs": [
-            {
-              "name": "_minCompoundInvestment",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "_maxCompoundInvestment",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setGroupRate",
-          "inputs": [
-            {
-              "name": "_groupRateFirstLevel",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "_groupRateSecondLevel",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "_groupRateThirdLevel",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setLimitAmount",
-          "inputs": [
-            {
-              "name": "_limitAmount",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setLockRate",
-          "inputs": [
-            {
-              "name": "_lockRate",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setManager",
-          "inputs": [
-            {
-              "name": "_manager",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setManagerRate",
-          "inputs": [
-            {
-              "name": "_managerRate",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setMaxInvestment",
-          "inputs": [
-            {
-              "name": "_maxInvestment",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setMinInvestment",
-          "inputs": [
-            {
-              "name": "_minInvestment",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setMinMonths",
-          "inputs": [
-            {
-              "name": "compoundCount",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "minMonths",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setNoInterestWhenPrincipleWithdraw",
-          "inputs": [
-            {
-              "name": "_noInterestWhenPrincipleWithdraw",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setPauseInvest",
-          "inputs": [
-            {
-              "name": "_pauseUsdtInvest",
-              "type": "bool",
-              "internalType": "bool"
-            },
-            {
-              "name": "_pauseBurnInvest",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setPauseSwitch",
-          "inputs": [
-            {
-              "name": "_pauseInterest",
-              "type": "bool",
-              "internalType": "bool"
-            },
-            {
-              "name": "_pausePrincipal",
-              "type": "bool",
-              "internalType": "bool"
-            },
-            {
-              "name": "_pauseExtraRewards",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setPinkLocker",
-          "inputs": [
-            {
-              "name": "newPinkLocker",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setStartTime",
-          "inputs": [
-            {
-              "name": "_startTime",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setTeams",
-          "inputs": [
-            {
-              "name": "teamAddrs",
-              "type": "address[]",
-              "internalType": "address[]"
-            },
-            {
-              "name": "bValid",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setTimeInterval",
-          "inputs": [
-            {
-              "name": "_startTime",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "_timeInterval",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setWorkshopExtraRate",
-          "inputs": [
-            {
-              "name": "_workshopExtraRate",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "setWorkshopExtraRewardThreshold",
-          "inputs": [
-            {
-              "name": "_workshopExtraRewardThreshold",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "settle",
-          "inputs": [
-            {
-              "name": "fromIndex",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "endIndex",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "burnPrice",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "startTime",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "teamInfos",
-          "inputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "team",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "timestamp",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "bApproved",
-              "type": "bool",
-              "internalType": "bool"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "teamLength",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "teams",
-          "inputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "timeInterval",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "toggleOpenEmergencyWithdraw",
-          "inputs": [],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "togglePause",
-          "inputs": [],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "totalContribute",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "totalExtraRewardsAmountWithdrawed",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "totalInterestAmountWithdrawed",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "totalInvestAmount",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "totalInvestAmountWithdrawed",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "totalInvestorNumber",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "transferOwnership",
-          "inputs": [
-            {
-              "name": "newOwner",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "updateInterestRate",
-          "inputs": [
-            {
-              "name": "months",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "interestRate",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "updateLpRate",
-          "inputs": [
-            {
-              "name": "months",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "lpRate",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "updateReferrerRate",
-          "inputs": [
-            {
-              "name": "months",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "referrerRate",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "nonpayable"
-        },
-        {
-          "type": "function",
-          "name": "usdtToken",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "contract IERC20"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "userContribute",
-          "inputs": [
-            {
-              "name": "",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "withdraw",
-          "inputs": [
-            {
-              "name": "receiver",
-              "type": "address",
-              "internalType": "address"
-            }
-          ],
-          "outputs": [],
-          "stateMutability": "payable"
-        },
-        {
-          "type": "function",
-          "name": "workshopExtraRate",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "function",
-          "name": "workshopExtraRewardThreshold",
-          "inputs": [],
-          "outputs": [
-            {
-              "name": "",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ],
-          "stateMutability": "view"
-        },
-        {
-          "type": "event",
-          "name": "BurnInvested",
-          "inputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "usdtAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            },
-            {
-              "name": "burnAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            },
-            {
-              "name": "referrer",
-              "type": "address",
-              "indexed": false,
-              "internalType": "address"
-            },
-            {
-              "name": "bCompound",
-              "type": "bool",
-              "indexed": false,
-              "internalType": "bool"
-            }
-          ],
-          "anonymous": false
-        },
-        {
-          "type": "event",
-          "name": "BurnReinvested",
-          "inputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "usdtAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            },
-            {
-              "name": "burnAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            }
-          ],
-          "anonymous": false
-        },
-        {
-          "type": "event",
-          "name": "ExtraRewardClaimed",
-          "inputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "usdtAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            },
-            {
-              "name": "burnAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            }
-          ],
-          "anonymous": false
-        },
-        {
-          "type": "event",
-          "name": "OwnershipTransferred",
-          "inputs": [
-            {
-              "name": "previousOwner",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "newOwner",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            }
-          ],
-          "anonymous": false
-        },
-        {
-          "type": "event",
-          "name": "Paused",
-          "inputs": [
-            {
-              "name": "account",
-              "type": "address",
-              "indexed": false,
-              "internalType": "address"
-            }
-          ],
-          "anonymous": false
-        },
-        {
-          "type": "event",
-          "name": "ReferralRewardPaid",
-          "inputs": [
-            {
-              "name": "referrer",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "investor",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "token",
-              "type": "address",
-              "indexed": false,
-              "internalType": "address"
-            },
-            {
-              "name": "amount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            },
-            {
-              "name": "usdtAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            },
-            {
-              "name": "level",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            }
-          ],
-          "anonymous": false
-        },
-        {
-          "type": "event",
-          "name": "RewardClaimed",
-          "inputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "receiver",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "burnAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            }
-          ],
-          "anonymous": false
-        },
-        {
-          "type": "event",
-          "name": "Settle",
-          "inputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "burnAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            },
-            {
-              "name": "usdtAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            }
-          ],
-          "anonymous": false
-        },
-        {
-          "type": "event",
-          "name": "Unpaused",
-          "inputs": [
-            {
-              "name": "account",
-              "type": "address",
-              "indexed": false,
-              "internalType": "address"
-            }
-          ],
-          "anonymous": false
-        },
-        {
-          "type": "event",
-          "name": "UsdtInvested",
-          "inputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "usdtAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            },
-            {
-              "name": "burnAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            },
-            {
-              "name": "referrer",
-              "type": "address",
-              "indexed": false,
-              "internalType": "address"
-            },
-            {
-              "name": "bCompound",
-              "type": "bool",
-              "indexed": false,
-              "internalType": "bool"
-            }
-          ],
-          "anonymous": false
-        },
-        {
-          "type": "event",
-          "name": "Withdrawn",
-          "inputs": [
-            {
-              "name": "user",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "receiver",
-              "type": "address",
-              "indexed": true,
-              "internalType": "address"
-            },
-            {
-              "name": "burnAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            },
-            {
-              "name": "usdtAmount",
-              "type": "uint256",
-              "indexed": false,
-              "internalType": "uint256"
-            }
-          ],
-          "anonymous": false
-        },
-        {
-          "type": "error",
-          "name": "EnforcedPause",
-          "inputs": []
-        },
-        {
-          "type": "error",
-          "name": "ExpectedPause",
-          "inputs": []
-        },
-        {
-          "type": "error",
-          "name": "OwnableInvalidOwner",
-          "inputs": [
-            {
-              "name": "owner",
-              "type": "address",
-              "internalType": "address"
-            }
-          ]
-        },
-        {
-          "type": "error",
-          "name": "OwnableUnauthorizedAccount",
-          "inputs": [
-            {
-              "name": "account",
-              "type": "address",
-              "internalType": "address"
-            }
-          ]
-        },
-        {
-          "type": "error",
-          "name": "ReentrancyGuardReentrantCall",
-          "inputs": []
-        }
-      ]
+      {
+        "type": "constructor",
+        "inputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "CLAIM_FEE",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "authers",
+        "inputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "autoSwapUsdt2Burn",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "burnLimitPrice",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "burnToken",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "contract IERC20"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "burnUsdtPair",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "contract IUniswapPair"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "buyBurn",
+        "inputs": [
+          {
+            "name": "usdtAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "calculateBurnAmountByInvestor",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "calculatePeroid",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "calculateRewards",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "calculateWithdrawableExtraRewards",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "checkInvestable",
+        "inputs": [
+          {
+            "name": "investor",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "claimExtraRewards",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "claimedUsdtRewards",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "payable"
+      },
+      {
+        "type": "function",
+        "name": "claimLeftBurn",
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "claimRewards",
+        "inputs": [
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "payable"
+      },
+      {
+        "type": "function",
+        "name": "claimUsdtEmergency",
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "compoundMinMonths",
+        "inputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "compoundStat",
+        "inputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "currentPeriodTotalInvestmentAmount",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "extraToManager",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "getEqualBurnAmount",
+        "inputs": [
+          {
+            "name": "usdtAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "getExpectedBurnAmount",
+        "inputs": [
+          {
+            "name": "usdtAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "getExpectedUsdtAmount",
+        "inputs": [
+          {
+            "name": "burnAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "getMinMonths",
+        "inputs": [
+          {
+            "name": "investor",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "getReferrers",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "investmentInfos",
+            "type": "tuple[]",
+            "internalType": "struct NovaBank.Investment[]",
+            "components": [
+              {
+                "name": "user",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "usdtAmount",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "burnAmount",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "withdrawedUsdtAmount",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "startTime",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "lastClaimTime",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "endTime",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "interestRateDaily",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "isActive",
+                "type": "bool",
+                "internalType": "bool"
+              }
+            ]
+          },
+          {
+            "name": "totalPerformances",
+            "type": "uint256[]",
+            "internalType": "uint256[]"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "getTeamInfos",
+        "inputs": [
+          {
+            "name": "fromIndex",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "endIndex",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "tuple[]",
+            "internalType": "struct NovaBank.TeamInfo[]",
+            "components": [
+              {
+                "name": "team",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "timestamp",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "bApproved",
+                "type": "bool",
+                "internalType": "bool"
+              }
+            ]
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "groupRateFirstLevel",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "groupRateSecondLevel",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "groupRateThirdLevel",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "interestRateMap",
+        "inputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "investBurn",
+        "inputs": [
+          {
+            "name": "amount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "referrer",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "months",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "investUsdt",
+        "inputs": [
+          {
+            "name": "amount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "referrer",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "months",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "investments",
+        "inputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "usdtAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "burnAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "withdrawedUsdtAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "startTime",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "lastClaimTime",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "endTime",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "interestRateDaily",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "isActive",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "investors",
+        "inputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "isApprovedTeam",
+        "inputs": [
+          {
+            "name": "team",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "isInvestorNotFinishCompound",
+        "inputs": [
+          {
+            "name": "investor",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "isValidPrice",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "limitAmount",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "lockRate",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "lpRateMap",
+        "inputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "manager",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "managerRate",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "maxCompoundInvestment",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "maxInvestment",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "minCompoundInvestment",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "minInvestment",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "noInterestWhenPrincipleWithdraw",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "openEmergencyWithdraw",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "owner",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "pauseBurnInvest",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "pauseExtraRewardWithdraw",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "pauseInterestWithdraw",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "pausePrincipleWithdraw",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "pauseUsdtInvest",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "paused",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "periodCount",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "pinkLocker",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "rateUsedMap",
+        "inputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "referrals",
+        "inputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "referrer",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "totalBurnRewards",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "totalBurn2UsdtRewards",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "totalUsdtRewards",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "totalPerformance",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "totalExtraRewards",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "withdrawnExtraRewards",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "referrerRateMap",
+        "inputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "referrers",
+        "inputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "renounceOwnership",
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "rewardTiers",
+        "inputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "threshold",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "rate",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "router",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "contract IUniswapV2Router02"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "setAuther",
+        "inputs": [
+          {
+            "name": "auther",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "bApproved",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setAutoSwap",
+        "inputs": [
+          {
+            "name": "_bAutoSwap",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setBurnLimitPrice",
+        "inputs": [
+          {
+            "name": "_burnLimitPrice",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setClaimFee",
+        "inputs": [
+          {
+            "name": "_claimFee",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setCompoundInvestment",
+        "inputs": [
+          {
+            "name": "_minCompoundInvestment",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "_maxCompoundInvestment",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setGroupRate",
+        "inputs": [
+          {
+            "name": "_groupRateFirstLevel",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "_groupRateSecondLevel",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "_groupRateThirdLevel",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setLimitAmount",
+        "inputs": [
+          {
+            "name": "_limitAmount",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setLockRate",
+        "inputs": [
+          {
+            "name": "_lockRate",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setManager",
+        "inputs": [
+          {
+            "name": "_manager",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setManagerRate",
+        "inputs": [
+          {
+            "name": "_managerRate",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setMaxInvestment",
+        "inputs": [
+          {
+            "name": "_maxInvestment",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setMinInvestment",
+        "inputs": [
+          {
+            "name": "_minInvestment",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setMinMonths",
+        "inputs": [
+          {
+            "name": "compoundCount",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "minMonths",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setNoInterestWhenPrincipleWithdraw",
+        "inputs": [
+          {
+            "name": "_noInterestWhenPrincipleWithdraw",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setPauseInvest",
+        "inputs": [
+          {
+            "name": "_pauseUsdtInvest",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "_pauseBurnInvest",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setPauseSwitch",
+        "inputs": [
+          {
+            "name": "_pauseInterest",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "_pausePrincipal",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "_pauseExtraRewards",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setPinkLocker",
+        "inputs": [
+          {
+            "name": "newPinkLocker",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setStartTime",
+        "inputs": [
+          {
+            "name": "_startTime",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setTeams",
+        "inputs": [
+          {
+            "name": "teamAddrs",
+            "type": "address[]",
+            "internalType": "address[]"
+          },
+          {
+            "name": "bValid",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setTimeInterval",
+        "inputs": [
+          {
+            "name": "_startTime",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "_timeInterval",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setTrader",
+        "inputs": [
+          {
+            "name": "trader",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "bApproved",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setWorkshopExtraRate",
+        "inputs": [
+          {
+            "name": "_workshopExtraRate",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setWorkshopExtraRewardThreshold",
+        "inputs": [
+          {
+            "name": "_workshopExtraRewardThreshold",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "settle",
+        "inputs": [
+          {
+            "name": "fromIndex",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "endIndex",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "burnPrice",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "startTime",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "teamInfos",
+        "inputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "team",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "timestamp",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "bApproved",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "teamLength",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "teams",
+        "inputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "timeInterval",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "toggleOpenEmergencyWithdraw",
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "togglePause",
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "totalContribute",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "totalExtraRewardsAmountWithdrawed",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "totalInterestAmountWithdrawed",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "totalInvestAmount",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "totalInvestAmountWithdrawed",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "totalInvestorNumber",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "traders",
+        "inputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "transferOwnership",
+        "inputs": [
+          {
+            "name": "newOwner",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "updateInterestRate",
+        "inputs": [
+          {
+            "name": "months",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "interestRate",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "updateLpRate",
+        "inputs": [
+          {
+            "name": "months",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "lpRate",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "updateReferrerRate",
+        "inputs": [
+          {
+            "name": "months",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "referrerRate",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "usdtToken",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "contract IERC20"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "userContribute",
+        "inputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "withdraw",
+        "inputs": [
+          {
+            "name": "receiver",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "payable"
+      },
+      {
+        "type": "function",
+        "name": "workshopExtraRate",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "workshopExtraRewardThreshold",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "event",
+        "name": "BurnInvested",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "usdtAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          },
+          {
+            "name": "burnAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          },
+          {
+            "name": "referrer",
+            "type": "address",
+            "indexed": false,
+            "internalType": "address"
+          },
+          {
+            "name": "bCompound",
+            "type": "bool",
+            "indexed": false,
+            "internalType": "bool"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "BurnReinvested",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "usdtAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          },
+          {
+            "name": "burnAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "ExtraRewardClaimed",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "usdtAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          },
+          {
+            "name": "burnAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "OwnershipTransferred",
+        "inputs": [
+          {
+            "name": "previousOwner",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "newOwner",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "Paused",
+        "inputs": [
+          {
+            "name": "account",
+            "type": "address",
+            "indexed": false,
+            "internalType": "address"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "ReferralRewardPaid",
+        "inputs": [
+          {
+            "name": "referrer",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "investor",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "token",
+            "type": "address",
+            "indexed": false,
+            "internalType": "address"
+          },
+          {
+            "name": "amount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          },
+          {
+            "name": "usdtAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          },
+          {
+            "name": "level",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "RewardClaimed",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "burnAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "Settle",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "burnAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          },
+          {
+            "name": "usdtAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "Unpaused",
+        "inputs": [
+          {
+            "name": "account",
+            "type": "address",
+            "indexed": false,
+            "internalType": "address"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "UsdtInvested",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "usdtAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          },
+          {
+            "name": "burnAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          },
+          {
+            "name": "referrer",
+            "type": "address",
+            "indexed": false,
+            "internalType": "address"
+          },
+          {
+            "name": "bCompound",
+            "type": "bool",
+            "indexed": false,
+            "internalType": "bool"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "Withdrawn",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "receiver",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "burnAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          },
+          {
+            "name": "usdtAmount",
+            "type": "uint256",
+            "indexed": false,
+            "internalType": "uint256"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "error",
+        "name": "EnforcedPause",
+        "inputs": []
+      },
+      {
+        "type": "error",
+        "name": "ExpectedPause",
+        "inputs": []
+      },
+      {
+        "type": "error",
+        "name": "OwnableInvalidOwner",
+        "inputs": [
+          {
+            "name": "owner",
+            "type": "address",
+            "internalType": "address"
+          }
+        ]
+      },
+      {
+        "type": "error",
+        "name": "OwnableUnauthorizedAccount",
+        "inputs": [
+          {
+            "name": "account",
+            "type": "address",
+            "internalType": "address"
+          }
+        ]
+      },
+      {
+        "type": "error",
+        "name": "ReentrancyGuardReentrantCall",
+        "inputs": []
+      }
+    ]
 }

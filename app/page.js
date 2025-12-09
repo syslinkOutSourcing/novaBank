@@ -265,7 +265,7 @@ const InvestmentModal = memo(({
                         {month} {t.months}
                       </Box>
                       <Box fontSize="xs" color={TECH_COLORS.textDim}>
-                        {month === '3' ? '0.5%' : month === '6' ? '0.65%' : '0.8%'}
+                        {month === '3' ? '0.6%' : month === '6' ? '0.8%' : '1%'}
                       </Box>
                     </VStack>
                   </Box>
@@ -557,27 +557,27 @@ export default function Home() {
   })
   // console.log('investorInfo', investorInfo)
 
-  const maxInvestmentPerPeroid = 100000;
+  const maxInvestmentPerPeroid = 30000;
   const defaultHoursPerPeroid = 6;
   const dailyMaxInvestment = {
-    '2025-09-14': {
-      investmentLimit: 60000,
+    '2025-12-09': {
+      investmentLimit: 30000,
       hoursPerPeroid: 6
     },
-    '2025-09-15': {
-      investmentLimit: 70000,
+    '2025-12-10': {
+      investmentLimit: 30000,
       hoursPerPeroid: 6
     },
-    '2025-09-16': {
-      investmentLimit: 70000,
+    '2025-12-11': {
+      investmentLimit: 30000,
       hoursPerPeroid: 6
     },
-    '2025-09-17': {
-      investmentLimit: 70000,
+    '2025-12-12': {
+      investmentLimit: 30000,
       hoursPerPeroid: 6
     },
-    '2025-09-18': {
-      investmentLimit: 70000,
+    '2025-12-13': {
+      investmentLimit: 30000,
       hoursPerPeroid: 6
     }
   };
