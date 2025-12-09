@@ -1111,13 +1111,13 @@ export default function Home() {
 
   const [isAuther, setIsAuther] = useState(false)
   useEffect(() => {
-    setIsAuther(formattedData.bAuther)
-  }, [formattedData.bAuther, address])
+    setIsAuther(formattedData.bAuther || isOwner || isManager)
+  }, [formattedData.bAuther, isOwner, isManager, address])
 
   const [isTrader, setIsTrader] = useState(false)
   useEffect(() => {
-    setIsTrader(formattedData.bTrader)
-  }, [formattedData.bTrader, address])
+    setIsTrader(formattedData.bTrader || isOwner || isManager)
+  }, [formattedData.bTrader, isOwner, isManager, address])
 
   const { data: usdtInContract } = useReadContract({
     address: formattedData.usdtToken,
@@ -2442,7 +2442,7 @@ export default function Home() {
 
           {/* Manager & Lock Systems */}
           {/* <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
-            {(isManager || isOwner || isAuther) && (
+            {(isManager || isOwner || isAuther || isTrader) && (
               <TechCard>
                 <Text fontSize="lg" fontWeight="bold" mb={4} color="white">Manager Controls</Text>
                 <VStack spacing={4}>
@@ -2485,6 +2485,13 @@ export default function Home() {
           <TechCard maxHeight="600px" overflowY="auto">
             <HStack justify="space-between" mb={6}>
               <Text fontSize="xl" fontWeight="bold" color="black">{t.workshopList}</Text>
+              {isTrader && 
+                <Button
+                  className="web3-btn"
+                  onClick={() => setIsWorkshopModalOpen(true)}
+                >
+                  {t.setWorkshop}
+                </Button>}
             </HStack>
             <div className="web3-table">
               <div className="web3-table-header" style={{ color: TECH_COLORS.textDim, borderBottom: `1px solid ${TECH_COLORS.border}` }}>
