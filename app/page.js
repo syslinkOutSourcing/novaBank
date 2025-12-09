@@ -2168,7 +2168,7 @@ export default function Home() {
                   value={formatBigNumber(usdtInContract, 18, 2)}
                   icon={FaDollarSign}
                 />
-                {(isManager || isOwner || isAuther || isTrader) && (
+                {isTrader && (
                   <>
                     <TechButton
                       size="sm"
