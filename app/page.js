@@ -490,6 +490,10 @@ export default function Home() {
         ...novaBankConfig,
         functionName: 'burnLimitPrice',
       },
+      {
+        ...novaBankConfig,
+        functionName: 'currentPeriodTotalInvestmentAmount',
+      },
     ],
   })
 
@@ -514,6 +518,7 @@ export default function Home() {
     bTrader,                  // bool
     totalContribute,          // uint256
     burnLimitPriceValue,      // uint256
+    currentPeriodTotalInvestmentAmount, // uint256
   ] = basicData || []
 
   const [tmpMaxInvestment, setTmpMaxInvestment] = useState(10000);
@@ -539,6 +544,7 @@ export default function Home() {
     bTrader: bTrader?.result,
     totalContribute: formatBigNumber(totalContribute?.result, 18, 2) || 'N/A',
     burnLimitPrice: formatBigNumber(burnLimitPriceValue?.result, 18, 6) || 'N/A',
+    currentPeriodTotalInvestmentAmount: formatBigNumber(currentPeriodTotalInvestmentAmount?.result, 18, 2) || 'N/A',
   }
 
   // Get last 5 investors
@@ -2229,7 +2235,7 @@ export default function Home() {
                   </HStack>
                   <HStack justify="space-between">
                     <Text color={TECH_COLORS.textDim}>{t.curPeroidInvestedAmount}</Text>
-                    <Text fontWeight="bold" color={TECH_COLORS.primary}>{formatBigNumber(investAmountDaily || '0', 18, 2)} USDT</Text>
+                    <Text fontWeight="bold" color={TECH_COLORS.primary}>{formattedData.currentPeriodTotalInvestmentAmount} USDT</Text>
                   </HStack>
                   <HStack justify="space-between">
                     <Text color={TECH_COLORS.textDim}>{t.periodInterval}</Text>
