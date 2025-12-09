@@ -8,6 +8,6 @@ export const config = getDefaultConfig({
   projectId: 'YOUR_PROJECT_ID',
   chains: [bsc],
   transports: {
-    [bsc.id]: http("https://bnb64982.allnodes.me:8545/IwpJoG0VfynfiheV"),
+    [bsc.id]: http("/api/rpc"),
   },
 })
