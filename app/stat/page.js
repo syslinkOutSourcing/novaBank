@@ -23,7 +23,7 @@ import CopyableAddress from '../tools/CopyableAddress'
 import copy from 'copy-to-clipboard';
 import workshopInfos from '../workshops.json'
 import InvestmentStatistics from './InvestmentStatistics'
-//import InvestorsFilter from './InvestorsFilter';
+import InvestorsFilter from './InvestorsFilter';
 import PumpBurnMgr from './PumpBurnMgr'
 import ReferralTracker from './ReferralTracker'
 
@@ -292,7 +292,7 @@ export default function Home() {
       const startIdx = Math.max(0, Math.min(investorStartIndex, totalInvestors - 1));
       const endIdx = totalInvestors - 1 // Math.max(startIdx, Math.min(investorEndIndex, totalInvestors - 1));
       
-      for (let i = endIdx - 1; i >= startIdx; i--) {
+      for (let i = endIdx; i >= startIdx; i--) {
         if (i >= 0) {
           investorQueries.push({
             ...pumpBurnConfig,
@@ -404,9 +404,9 @@ export default function Home() {
   useEffect(() => {
     if (!allWorkshops) return;
     
-    console.log('allWorkshopQueries allWorkshops', allWorkshops)
     const tmpWorkshopStat = {}
     allWorkshops.map((workshopInfo, index) => {
+      console.log('workshopInfo', workshopInfo)
       const investor = investorsInOneDay[index]
       const investAmount = new BigNumber(workshopInfo.result[0])
       workshopInfo.result[1].map(workshopAddr => {
@@ -993,14 +993,14 @@ export default function Home() {
         </div>
       )}
 
-      {/* <InvestorsFilter 
+      <InvestorsFilter 
         allInvestorInvestments={allInvestorInvestments}
         allInvestors={allInvestors}
         salonWorkshopFilter={salonWorkshopFilter}
         compoundCounts={compoundCounts}
         totalInvestorNumber={investorEndIndex}
         t={t}
-      /> */}
+      />
 
       {/* Workshop Info Table - Update to use filteredWorkshops */}
       {(

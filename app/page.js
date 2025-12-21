@@ -248,7 +248,7 @@ const InvestmentModal = memo(({
             <Box w="100%">
               <Box color={TECH_COLORS.textDim} mb={2} fontSize="sm">{t.investmentPeriod}</Box>
               <SimpleGrid columns={3} spacing={4}>
-                {['3', '6', '9'].map((month) => (
+                {['1', '3', '9', '12'].map((month) => (
                   <Box
                     key={month}
                     as="button"
@@ -265,7 +265,7 @@ const InvestmentModal = memo(({
                         {month} {t.months}
                       </Box>
                       <Box fontSize="xs" color={TECH_COLORS.textDim}>
-                        {month === '3' ? '0.6%' : month === '6' ? '0.8%' : '1%'}
+                        {month === '1' ? '0.6%' : month === '3' ? '0.8%' : month === '9' ? '1%' : '1.5%'}
                       </Box>
                     </VStack>
                   </Box>
