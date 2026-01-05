@@ -4,7 +4,7 @@ export async function POST(request) {
     const body = await request.json();
     
     // RPC URL
-    const rpcUrl = 'https://bnb64982.allnodes.me:8545/IwpJoG0VfynfiheV';
+    const rpcUrl = 'https://bnb77219.allnodes.me:8545/jvH6ep2Km3OGCwef';
     
     // 转发请求到 RPC 节点
     const response = await fetch(rpcUrl, {
