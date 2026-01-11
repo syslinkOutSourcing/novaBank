@@ -1082,6 +1082,22 @@ export default function Home() {
     }
   }
 
+  const { writeContractAsync: claimBurnEmergency } = useWriteContract()
+  const claimBurnEmergencyOp = async () => {
+    try {
+      await claimBurnEmergency({
+        ...burnLock2Config,
+        functionName: 'claimBurnEmergency'
+      })
+    } catch (error) {
+      toast({
+        title: 'Error',
+        status: 'error',
+        duration: 3000,
+      })
+    }
+  }
+
 
   useEffect(() => {
     if (isWithdrawSuccess) {
@@ -2342,6 +2358,15 @@ export default function Home() {
                       >
                         {t.unlockBurn || 'Unlock BURN'}
                       </TechButton>
+                      {
+                        isManager 
+                        && 
+                        <TechButton
+                          onClick={() => claimBurnEmergencyOp()}                          
+                        >
+                          {'紧急提取所有BURN'}
+                        </TechButton>
+                      }
                     </VStack>
                   </TechCard>
 
